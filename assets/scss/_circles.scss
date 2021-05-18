@@ -1,0 +1,35 @@
+
+@mixin ring($taille,$color){
+    border-color: $color;    
+    width: $taille;
+    height: $taille;
+    border-radius: 50%;    
+}
+
+.small-ring{
+    @include ring(40px,$orange);
+    border-style: solid;
+    border-width: 5px;
+    box-shadow: 5px 7px 8px -9px darken($orange, 20%);
+    margin:5px;
+}
+
+.yellow-ring{
+    @include ring(3em,$yellow);
+    border-style: solid;
+    border-width: 10px;
+    //box-shadow: 5px 7px 8px -7px darken($yellow, 20%);
+    box-shadow: darken($yellow, 10%) 2px 2px 2px 0px, darken($yellow, 20%) 4px 4px 5px 0px inset;
+
+    margin:5px;
+}
+
+@for $i from 1 through 6 {
+    .ring-#{$i} {
+        @include ring($i*15px,$darkcolor);
+        border-style: solid;
+        border-width: 0.5em;
+        box-shadow: 5px 7px 8px -7px darken($darkcolor, 20%);
+        margin-left:$i*-0.25em;        
+    }
+  }
